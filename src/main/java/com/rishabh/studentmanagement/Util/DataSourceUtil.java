@@ -16,11 +16,13 @@ public class DataSourceUtil {
         Properties properties = loadProperties();
         HikariConfig config = new HikariConfig();
 
+        //DB Connection
         config.setJdbcUrl(requireProperty(properties, "db.url"));
         config.setUsername(requireProperty(properties, "db.username"));
         config.setPassword(requireProperty(properties, "db.password"));
         config.setDriverClassName(properties.getProperty("db.driver", "com.mysql.cj.jdbc.Driver"));
 
+        //pool configuration
         config.setMaximumPoolSize(Integer.parseInt(properties.getProperty("db.pool.maxSize", "10")));
         config.setMinimumIdle(Integer.parseInt(properties.getProperty("db.pool.minIdle", "2")));
         config.setIdleTimeout(Long.parseLong(properties.getProperty("db.pool.idleTimeoutMs", "30000")));

@@ -22,7 +22,6 @@ public class StudentDAO {
 
             ps.executeUpdate();
             System.out.println("Student added!");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
